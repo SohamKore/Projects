@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Repositories</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500;600;700;800;900&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500;600;700;800;900&family=Pacifico&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=VT323&display=swap" rel="stylesheet">
+  <style>
+      :root {
+      --primary-color: #ff0000;
+      --secondary-color: rgba(255, 0, 0, 0.458);
+      --bg-color: #333333;
+    }
+    body {
+        font-family: 'Montserrat', sans-serif;
+        overflow: hidden;
+        
+        height: 100vh;
+        width: 100vw;
+/* font-family: 'Oswald', sans-serif; */
+      background-color: #000;
+      background-image: linear-gradient(90deg,rgba(0, 0, 0, 0.849),rgba(0, 0, 0, 0.803)),url('https://iili.io/H6HHzLN.jpg');
+      color: var(--primary-color);
+      text-shadow: 0px 0px 25px --primary-color;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size:cover;
+      /* animation: bgAnim 1s linear infinite; */
+    }
+    .soham{
+        position: absolute;
+        top: 10px;
+        left:50px;
+        font-weight: 900;
+        letter-spacing: 6px;
+        font-size: xx-large;
+        animation: fontAnimation 1s linear infinite;
+    }
+    hr{
+        background-color: red;
+        border: 2px solid red;
+        animation: hrAnim .1s infinite;
+        transition: none;
+    }
+    @keyframes hrAnim{
+        0%{
+            border: 2px solid red;
+            box-shadow: 0px 0px 60px red,px 0px 90px red;;
+        }
+        100%{
+            border: 2px solid white;
+            box-shadow: 0px 0px 60px white;
+        }
+    }
+
+
+
+    @keyframes fontAnimation {
+      0% {
+        font-family: 'VT323', monospace;
+       
+        
+      }
+      50% {
+        font-family: 'Permanent Marker', cursive;
+        
+      }
+      75% {
+        font-family: 'Rock Salt', cursive;
+       
+      }
+      100%{
+        
+        font-family: 'Pacifico', cursive;
+
+      }
+    }
+    h1 {
+        font-family: 'VT323', monospace;
+      text-align: center;
+      margin-top: 40px;
+      box-sizing: border-box;
+      font-size: 36px !important;
+      transition: .3ms ease-out;
+      text-shadow: 0px 0px 20px red;
+      width: 100vw; /* Fixed width */
+  height: 0px; /* Fixed height */
+  overflow:visible; /* Optional: hide overflowed text */
+    }
+    .scroller{
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height: 100%;
+        width: 100%;
+    }
+    .scroller::-webkit-scrollbar{
+        background-color: black;
+        border-radius: 100px;
+    }
+    .scroller::-webkit-scrollbar-thumb{
+        background-color: red;
+        border-radius: 100px;
+        box-shadow: 0px 0px 60px red;
+    }
+    h1:hover{
+        text-shadow: 12px 16px;
+    }
+
+    .repo-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 40px;
+      padding: 10px;
+    height: 100%;
+
+    }
+
+    .card {
+      width: 300px;
+      margin: 20px;
+      padding: 20px;
+      background-color: #3b0000e3;
+      border: 2px solid rgb(95, 0, 0);
+      box-shadow: 0px 0px 35px var(--secondary-color);
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 55px var(--secondary-color);
+    }
+
+    .repo-name {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .repo-description {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    .repo-link {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+
+    .repo-link i {
+      margin-right: 5px;
+    }
+
+    .repo-link:hover {
+      opacity: 0.7;
+    }
+
+    .repo-preview {
+      margin-top: 20px;
+    }
+
+    .repo-preview img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+    <label class="soham">SXHAM</label>
+    <div class="scroller">
+    <br>
+  <h1>My Repositories</h1>
+  <br>
+  <hr>
+  <div class="repo-container"></div>
+
+
+  <script>
+    function displayRepositories(repositories) {
+      var repoContainer = document.querySelector('.repo-container');
+
+      repositories.forEach(function(repo) {
+        var card = document.createElement('div');
+        card.classList.add('card');
+
+        var repoName = document.createElement('h2');
+        repoName.classList.add('repo-name');
+        repoName.textContent = repo.name;
+
+        var repoDescription = document.createElement('p');
+        repoDescription.classList.add('repo-description');
+        repoDescription.textContent = repo.description;
+
+        var repoLink = document.createElement('a');
+        repoLink.classList.add('repo-link');
+        repoLink.href = repo.html_url;
+        repoLink.target = '_blank';
+        repoLink.rel = 'noopener noreferrer';
+        repoLink.innerHTML = '<i class="fab fa-github"></i>View Repository';
+
+        var repoPreview = document.createElement('div');
+        repoPreview.classList.add('repo-preview');
+
+        if (repo.homepage) {
+          var repoPreviewLink = document.createElement('a');
+          repoPreviewLink.href = repo.homepage;
+          repoPreviewLink.target = '_blank';
+          repoPreviewLink.rel = 'noopener noreferrer';
+
+          var repoPreviewImg = document.createElement('img');
+          repoPreviewImg.src = 'preview-images/' + repo.name + '.png';
+          repoPreviewImg.alt = repo.name;
+
+          repoPreviewLink.appendChild(repoPreviewImg);
+          repoPreview.appendChild(repoPreviewLink);
+        }
+
+        card.appendChild(repoName);
+        card.appendChild(repoDescription);
+        card.appendChild(repoLink);
+        card.appendChild(repoPreview);
+
+        repoContainer.appendChild(card);
+      });
+    }
+
+    fetch('https://api.github.com/users/sohamkore/repos')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(repositories) {
+        displayRepositories(repositories);
+      })
+      .catch(function(error) {
+        console.log('Error:', error);
+      });
+  </script>
+  </div>
+</body>
+</html>
