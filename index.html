@@ -69,9 +69,28 @@
         }
         100%{
             border: 2px solid red;
-            box-shadow: 0px 0px 9px red,10px 0px 1px blue;
+            box-shadow: -10px 0px 1px red,10px 0px 1px blue;
         }
     }
+
+    @keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating-element {
+  animation: rotate 1s linear infinite;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  left: 0;
+  top: 0;
+  display: none;
+}
 
 
 
@@ -190,9 +209,14 @@
       height: auto;
       border-radius: 5px;
     }
+    .daddyElon{
+      width: 12rem;
+    }
   </style>
 </head>
 <body>
+  
+  <div class="rotating-element"><img class="daddyElon" src="elong.png" alt=""></div>
     <label class="soham">SXHAM</label>
     <div class="scroller">
     <br>
@@ -200,9 +224,26 @@
   <br>
   <hr>
   <div class="repo-container"></div>
+  
 
 
   <script>
+
+document.addEventListener('mousemove', function(event) {
+  var floatingElement = document.querySelector('.rotating-element');
+  var offsetX = floatingElement.offsetWidth / 2;
+  var offsetY = floatingElement.offsetHeight / 2;
+  floatingElement.style.display = 'block';
+  floatingElement.style.left = (event.clientX - offsetX) + 'px';
+  floatingElement.style.top = (event.clientY - offsetY) + 'px';
+});
+
+
+
+
+
+
+
     function displayRepositories(repositories) {
       var repoContainer = document.querySelector('.repo-container');
 
