@@ -215,7 +215,10 @@
   </style>
 </head>
 <body>
-  
+    <button id="theme-switcher" style="position: fixed; top: 20px; right: 20px; z-index: 9999; padding: 10px 20px; background: red; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Switch Theme
+      </button>
+      
   <div class="rotating-element"><img class="daddyElon" src="elong.png" alt="S  O  H  A  M"></div>
     <label class="soham">SXHAM</label>
     <div class="scroller">
@@ -305,5 +308,40 @@ document.addEventListener('mousemove', function(event) {
   </script>
       <br><br><br>
   </div>
+ <link id="theme-css" rel="stylesheet" href="">
+ <script>
+    const themeButton = document.getElementById('theme-switcher');
+    const themeLink = document.getElementById('theme-css');
+    let isSakuraApplied = false;
+  
+    themeButton.addEventListener('click', () => {
+      if (!isSakuraApplied) {
+        // Remove all other style sheets and inline styles
+        let allLinks = document.querySelectorAll('link[rel="stylesheet"]');
+        allLinks.forEach(link => {
+          if (link.id !== 'theme-css') {
+            link.remove();  // Remove all other stylesheets
+          }
+        });
+  
+        let allStyles = document.querySelectorAll('style');
+        allStyles.forEach(style => {
+          style.remove();  // Remove any inline styles
+        });
+  
+        // Now apply sakura.css
+        themeLink.href = "sakura.css";  // Load sakura.css
+        document.body.style.background = "white";  // Optional: reset your bg to match sakura.css
+        isSakuraApplied = true;
+        themeButton.innerText = "Back to Original";
+      } else {
+        // Reload the page to restore the original styles
+        window.location.reload();
+      }
+    });
+  </script>
+  
+  
+
 </body>
 </html>
