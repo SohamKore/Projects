@@ -1,0 +1,107 @@
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #ffffff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  color: #ff6eb2;
+  font-size: 3rem;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  
+}
+hr{
+  transition: 0.6s ease-in-out;
+
+}
+h1:hover+hr{
+  width: 250px;
+}
+
+hr {
+  width: 80px;
+  height: 4px;
+  background-color: #ff6eb2;
+  border: none;
+  margin-bottom: 30px;
+  border-radius: 2px;
+}
+
+.repo-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  padding-bottom: 40px;
+}
+
+.card {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(45deg, rgba(255, 245, 138, 0.315),rgba(255, 20, 145, 0.244)), url(sakura.webp);
+  background-size: contain;
+  color: white !important;
+  background-position: center;
+  border: 3px dashed pink;
+}
+
+
+.repo-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ff6eb2;
+}
+
+.repo-description {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 15px;
+  min-height: 50px;
+}
+
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: color 0.3s;
+}
+
+.repo-link:hover {
+  color: #ff6eb2;
+}
+
+.repo-link i {
+  margin-right: 8px;
+}
+
+.repo-preview img {
+  margin-top: 15px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
