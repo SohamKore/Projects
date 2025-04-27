@@ -11,7 +11,9 @@ body {
   align-items: center;
   text-align: center;
 }
-
+.daddyElon{
+  display:none;
+}
 h1 {
   color: #ff6eb2;
   font-size: 3rem;
