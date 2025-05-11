@@ -36,6 +36,21 @@
       background-size:cover;
       /* animation: bgAnim 1s linear infinite; */
     }
+
+        @keyframes invert {
+            0% {
+                filter: invert(1);
+            }
+            100% {
+                filter: invert(0);
+
+            }
+        }
+.invert-on-hold * {
+  animation: invert 0.0001s linear infinite alternate-reverse;
+}
+
+
     .soham{
         position: absolute;
         top: 10px;
@@ -227,7 +242,44 @@
   <br>
   <hr>
   <div class="repo-container"></div>
-  
+  <script>
+let isXPressed = false;
+let styleElement = null;
+
+document.addEventListener('keydown', function(e) {
+  if (e.key.toLowerCase() === 'x' && !isXPressed) {
+    isXPressed = true;
+
+    styleElement = document.createElement('style');
+    styleElement.innerHTML = `
+      @keyframes invert {
+        0% { filter: invert(0) hue-rotate(0deg) saturate(1); transform: scale(1) rotate(0deg); }
+        25% { filter: invert(1) hue-rotate(90deg) saturate(3); transform: scale(1.03) rotate(2deg); }
+        50% { filter: invert(0.5) hue-rotate(180deg) saturate(2); transform: scale(0.97) rotate(-2deg); }
+        75% { filter: invert(1) hue-rotate(270deg) saturate(4); transform: scale(1.05) rotate(1deg); }
+        100% { filter: invert(0) hue-rotate(360deg) saturate(1); transform: scale(1) rotate(0deg); }
+      }
+
+      * {
+        animation: invert 0.2s infinite alternate ease-in-out !important;
+        transition: all 0.05s ease;
+      }
+    `;
+    document.head.appendChild(styleElement);
+  }
+});
+
+document.addEventListener('keyup', function(e) {
+  if (e.key.toLowerCase() === 'x') {
+    isXPressed = false;
+    if (styleElement) {
+      styleElement.remove();
+      styleElement = null;
+    }
+  }
+});
+</script>
+
 
 
   <script>
